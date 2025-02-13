@@ -79,15 +79,14 @@ footer {
 }
 
 .weather-current-icon {
-  font-size: 44px;
-  margin-top: 22px;
+  height: 88px;
+  width: 88px;
 }
 
 .weather-current-temperature {
   font-size: 88px;
   font-weight: bold;
   line-height: 88px;
-  margin-left: 10px;
 }
 
 .weather-current-unit {

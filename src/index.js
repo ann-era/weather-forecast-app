@@ -1,7 +1,10 @@
 function refreshCurrentInfo(response) {
-  console.log(response.data);
-
   let cityElement = document.querySelector("#weather-current-city");
+  let timeElement = document.querySelector("#current-time");
+  let date = new Date(response.data.time * 1000);
+  let currentWeatherIconElement = document.querySelector(
+    "#weather-current-icon"
+  );
   let currentTemperatureElement = document.querySelector(
     "#weather-current-temperature"
   );
@@ -11,11 +14,10 @@ function refreshCurrentInfo(response) {
   );
   let humidityElement = document.querySelector("#weather-current-humidity");
   let windElement = document.querySelector("#weather-current-wind");
-  let timeElement = document.querySelector("#current-time");
-  let date = new Date(response.data.time * 1000);
 
   cityElement.innerHTML = response.data.city;
   timeElement.innerHTML = formatDate(date);
+  currentWeatherIconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-current-icon" />`;
   currentTemperatureElement.innerHTML = Math.round(currentTemperature);
   descriptionElement.innerHTML = response.data.condition.description;
   humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
@@ -49,7 +51,7 @@ function formatDate(date) {
 }
 
 function searchCity(searchValue) {
-  city = searchValue.trim(); //.replaceAll(" ", "+");
+  city = searchValue.trim();
   let apiKey = "93aa3f2e40748o3cacebbc6bct7b0422";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(refreshCurrentInfo);
