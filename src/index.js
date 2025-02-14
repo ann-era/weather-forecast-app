@@ -1,3 +1,24 @@
+function displayForecast() {
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
+  let forecastHtml = "";
+
+  days.forEach(function (day) {
+    forecastHtml += `
+      <div class="weather-forecast-container">
+        <div class="weather-forecast-day">${day}</div>
+        <div class="weather-forecast-icon">🌤️</div>
+        <div class="weather-forecast-temperatures">
+          <div class="weather-forecast-temperature"><strong>15°</strong></div>
+          <div class="weather-forecast-temperature">9°</div>
+        </div>
+      </div>
+    `;
+  });
+
+  let forecastElement = document.querySelector("#weather-forecast");
+  forecastElement.innerHTML = forecastHtml;
+}
+
 function refreshCurrentInfo(response) {
   let cityElement = document.querySelector("#weather-current-city");
   let timeElement = document.querySelector("#current-time");
@@ -68,3 +89,4 @@ searchFormElement.addEventListener("submit", submitSearch);
 
 //set default city
 searchCity("Ranau");
+displayForecast();
