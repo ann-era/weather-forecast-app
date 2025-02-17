@@ -121,4 +121,3 @@ searchFormElement.addEventListener("submit", submitSearch);
 
 //set default city
 searchCity("Ranau");
-displayForecast();
